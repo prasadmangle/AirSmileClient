@@ -1,0 +1,22 @@
+.airline-details{
+    padding: 20px;
+    text-align: center;
+}
+
+.comments-section{
+    padding: 10px;
+    border: 1px;
+    border-color: black;
+    
+}
+
+.comment-date{
+font-style: italic;
+}
+
+.comment-user{
+    font-style: italic;
+}
+.img-responsive{
+    text-align: center;
+}

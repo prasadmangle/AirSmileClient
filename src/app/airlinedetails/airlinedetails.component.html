@@ -1,0 +1,54 @@
+<div class="airline-details">
+  <div class="airline-form-edit" *ngIf="adminGuard.canActivate()">
+    <form (submit)='updateAirline()'>
+      <label>Name:</label>
+      <input type="text" [(ngModel)]="airline.name" name="name" required/>
+      <br/>
+      <label>Photo:</label>
+      <img src="http://localhost:3000/{{airline.imagePath}}" class="img-responsive" style="width:20%" alt="Image">
+      <br/>
+      <button type="submit">Update Airline</button>
+    </form>
+    <span>
+      <button (click)="redirectToHome()">Back</button>
+    </span>
+    <button (click)="deleteClickHandler()">Delete Airline</button>
+
+  </div>
+  <div class="airline-form-readonly" *ngIf="!adminGuard.canActivate()">
+    <label>Name:</label>
+    <div>{{airline.name}}</div>
+    <br/>
+    <img src="http://localhost:3000/{{airline.imagePath}}" class="img-responsive" style="width:20%" alt="Image">
+    <br/>
+    <span>
+      <button (click)="redirectToHome()">Back</button>
+    </span>
+  </div>
+  <br/>
+  <div class="ratings-section">
+    <p>
+      <b>Ratings:</b>
+    </p>
+    <ngb-rating [rate]="starsCount" [readonly]="!loggedInGuard.canActivate()" [formControl]="ctrl" (rateChange)="rateClickHandler()"></ngb-rating>
+  </div>
+
+  <br/>
+  <div class="comments-section">
+    <p>
+      <b>Comments: </b>
+    </p>
+    <div *ngFor="let c of airline.comments">
+      <span class="comment-body">{{c.body}}</span>
+      <span class="comment-date"> ({{c.date| timeAgo}})</span>
+      <span class="comment-user"> [{{c.userEmail}}]</span>
+      <span *ngIf="canDeleteComment(c.userEmail)">
+        <span class="glyphicon glyphicon-remove-circle" (click)="removeCommentHandler(c)" *ngIf="loggedInGuard.canActivate() "></span>
+      </span>
+    </div>
+    <form *ngIf="loggedInGuard.canActivate()">
+      <input type="text" [(ngModel)]="comment" name="comment" (keydown.enter)="addComment()" required/>
+      <button type="submit" (click)="addComment()">Add Comment</button>
+    </form>
+  </div>
+</div>

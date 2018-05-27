@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>AirSmile</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style>
+    /* Remove the navbar's default margin-bottom and rounded borders */ 
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+    
+    /* Add a gray background color and some padding to the footer */
+    footer {
+      background-color: #f2f2f2;
+      padding: 25px;
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="#">AirSmiles</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li ><a routerLink="/" routerLinkActive="active">All Airlines</a></li>
+        <li ><a routerLink="/top10now" routerLinkActive="active">Top 10 Airlines of 2018</a></li>
+        <li ><a routerLink="/top10" routerLinkActive="active">Top 10 Airlines of All Time</a></li>        
+        <li *ngIf="authService.isAdmin()"><a routerLink="/admin" >Manage Airline Data</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li *ngIf="!authService.getUser()"><a routerLink="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        <li *ngIf="!authService.getUser()"><a routerLink="/register"><span class="glyphicon glyphicon-user"></span> Register</a></li>
+        <li *ngIf="authService.getUser()"> <a><span class="glyphicon glyphicon-user"></span> Welcome <b>{{ authService.getUser() }}</b></a></li>
+        <li *ngIf="authService.getUser()"><a href (click)="logout()">Log out <span class="glyphicon glyphicon-log-out"></span></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<!--<div class="jumbotron">
+  <div class="container text-center">
+    <h1>My Portfolio</h1>      
+    <p>Some text that represents "Me"...</p>
+  </div>
+</div>-->
+<div>
+    <router-outlet></router-outlet> 
+  </div>
+
+<footer class="container-fluid text-center">
+  <p>© 1998 - 2018 AirSmiles</p>
+</footer>
+
+</body>
+</html>

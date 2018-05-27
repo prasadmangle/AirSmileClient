@@ -1,0 +1,16 @@
+<div class="addAirline">
+  <form (submit)='addAirline'>
+    <label>Airline Name:</label>
+    <input type="text" [(ngModel)]="name" name="name" (keydown.enter)="submit()" required/>
+    <br/>
+    <br/>
+    <div class="input-group">
+      <label>Image:</label>
+      <input type="file" class="input-group" name="photo" ng2FileSelect [uploader]="uploader" required/>
+    </div>
+    <br/>
+    <button type="submit" (click)="addAirline()">Add Airline</button>
+    <br/>
+    <br/>
+  </form>
+</div>

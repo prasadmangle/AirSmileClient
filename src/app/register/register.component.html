@@ -1,0 +1,29 @@
+<h3>Registration</h3>
+<form class="form-inline" *ngIf="!authService.getUser()">
+  <div class="form-group">
+    <label for="username">User: </label>
+    <input class="form-control" name="username" #username>
+  </div>
+  <br/>
+  <div class="form-group">
+    <label for="password">Password: </label>
+    <input class="form-control" type="password" name="password" #password>
+  </div>
+  <br/>
+  <div class="form-group">
+    <label for="email">Email: </label>
+    <input class="form-control" type="email" name="email" #email>
+  </div>
+  <br/>
+  <div class="form-group">
+    <label for="role">Role: </label>
+    <select class="form-control" name="role" #role ngModel>
+      <option value="admin">Admin</option>
+      <option value="user">User</option>
+    </select>
+  </div>
+  <br/>
+  <a class="btn btn-success" (click)="register(username.value, password.value, email.value, role.value)">
+    Submit
+  </a>
+</form>

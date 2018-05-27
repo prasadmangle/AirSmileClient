@@ -1,0 +1,19 @@
+<div class="airline-cell" (click)="NavigateToDetails()">
+    <!--<a [routerLink]="['/airline', airline._id]">{{airline.name}}</a>-->
+    <b>{{airline.name}}</b>
+    <img src="http://localhost:3000/{{airline.imagePath}}" class="img-responsive" style="width:100%" alt="Image">
+    <!--<div *ngFor="let c of airline.comments">
+        <span>{{c.body}} ({{c.date}})</span>
+        <span>
+            <button (click)="removeCommentHandler(c)">Remove</button>
+        </span>
+    </div>
+    <form (submit)='addComment'>
+        <input type="text" [(ngModel)]="comment" name="comment" (keydown.enter)="submit()"/>
+        <button type="submit" (click)="addComment()">Add Comment</button>
+    </form>-->
+    <br/>
+    <ngb-rating [(rate)]="airline.starsCount" [readonly]="true"></ngb-rating>
+    <br/>
+    <!--<div *ngIf="adminGuard.canActivate()"><button (click)="deleteClickHandler()">Delete</button></div>-->
+</div>
