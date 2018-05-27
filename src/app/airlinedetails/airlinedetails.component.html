@@ -7,12 +7,14 @@
       <label>Photo:</label>
       <img src="http://localhost:3000/{{airline.imagePath}}" class="img-responsive" style="width:20%" alt="Image">
       <br/>
-      <button type="submit">Update Airline</button>
+      <br/>
+      <button type="submit" class="btn btn-success">Update Airline</button>
     </form>
+    <br/><br/>
     <span>
-      <button (click)="redirectToHome()">Back</button>
+      <button (click)="redirectToHome()" class="btn btn-primary">Back</button>
     </span>
-    <button (click)="deleteClickHandler()">Delete Airline</button>
+    <button (click)="deleteClickHandler()" class="btn btn-danger">Delete Airline</button>
 
   </div>
   <div class="airline-form-readonly" *ngIf="!adminGuard.canActivate()">
@@ -48,7 +50,7 @@
     </div>
     <form *ngIf="loggedInGuard.canActivate()">
       <input type="text" [(ngModel)]="comment" name="comment" (keydown.enter)="addComment()" required/>
-      <button type="submit" (click)="addComment()">Add Comment</button>
+      <button type="submit" (click)="addComment()" class="btn btn-default">Add Comment</button>
     </form>
   </div>
 </div>

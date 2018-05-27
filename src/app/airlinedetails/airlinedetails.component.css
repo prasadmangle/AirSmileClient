@@ -19,4 +19,9 @@ font-style: italic;
 }
 .img-responsive{
     text-align: center;
+    display: inline;
+}
+
+button{
+    padding-top: 10px;
 }
